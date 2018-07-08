@@ -1,5 +1,6 @@
 package pl.coderslab.dao;
 
+import pl.coderslab.model.Car;
 import pl.coderslab.model.Client;
 import pl.coderslab.services.DBService;
 
@@ -23,7 +24,7 @@ public class ClientDao {
         }
 
 
-        private  void addClient(Client client) {
+        public  void addClient(Client client) {
             String query = "INSERT INTO clients VALUES (?, ?, ?)";
             List<String> queryParams = new ArrayList<>();
             queryParams.add(String.valueOf(client.getId()));
@@ -33,8 +34,8 @@ public class ClientDao {
             DBService.executeUpdate(this.databaseName, query, queryParams);
         }
 
-        private void updateClient (Client client) {
-            String query = "UPDATE clients SET first_name = ?, second_name = ?, WHERE id = ?"; //NAZWA TABELI
+    public void updateClient (Client client) {
+            String query = "UPDATE clients SET first_name = ?, second_name = ? WHERE id = ?"; //NAZWA TABELI
 
             List<String> queryParams = new ArrayList<>();
             queryParams.add( client.getFirst_name()) ;
@@ -93,6 +94,9 @@ public class ClientDao {
             System.out.println(e);
         }
     }
+
+
+
 
 
 }

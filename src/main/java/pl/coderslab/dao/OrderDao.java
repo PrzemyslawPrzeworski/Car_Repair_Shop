@@ -12,18 +12,18 @@ public class OrderDao {
 
     private String databaseName = "Car_Repair_Shop"; //NAZWA BAZY DANYCH
 
-    public void save (Order car) {
+    public void save (Order order) {
 
-        if(car.getId()==0){
-            //add new employee to DB
-            this.addCar(car);
+        if(order.getId()==0){
+            //add new order to DB
+            this.addOrder(order);
         }else{
-            this.updateCar(car);
-            //update employee in DB
+            this.updateOrder(order);
+            //update order in DB
         }
     }
 
-    private  void addCar(Order order) {
+    public  void addOrder(Order order) {
         String query = "INSERT INTO orders VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //NAZWA TABELI
         List<String> queryParams = new ArrayList<>();
         queryParams.add(String.valueOf(order.getId()));
@@ -42,7 +42,7 @@ public class OrderDao {
         DBService.executeUpdate(this.databaseName, query, queryParams);
     }
 
-    private void updateCar (Order order) {
+    public void updateOrder (Order order) {
         String query = "UPDATE orders SET acceptance_date = ?, repair_date = ?, employee_id = ?, problem_description = ?, repair_description = ?, status = ?, car_id = ?, client_cost = ?, parts_cost = ?, manhour_cost = ?, manhour = ?  WHERE id = ?"; //NAZWA TABELI
 
         List<String> queryParams = new ArrayList<>();
@@ -132,6 +132,7 @@ public class OrderDao {
             System.out.println(e);
         }
     }
+
 
 
 

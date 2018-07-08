@@ -2,6 +2,7 @@ package pl.coderslab.dao;
 
 import pl.coderslab.model.Car;
 import pl.coderslab.model.Car;
+import pl.coderslab.model.Employee;
 import pl.coderslab.services.DBService;
 
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ public class CarDao {
         }
     }
 
-    private  void addCar(Car car) {
+    public void addCar(Car car) {
         String query = "INSERT INTO cars VALUES (?, ?, ?, ?, ?, ?, ?)"; //NAZWA TABELI
         List<String> queryParams = new ArrayList<>();
         queryParams.add(String.valueOf(car.getId()));
@@ -38,8 +39,8 @@ public class CarDao {
         DBService.executeUpdate(this.databaseName, query, queryParams);
     }
 
-    private void updateCar (Car car) {
-        String query = "UPDATE cars SET first_name = ?, second_name = ?, address = ?, telephone = ?, note = ?, manhour_cost = ? WHERE id = ?"; //NAZWA TABELI
+    public void updateCar (Car car) {
+        String query = "UPDATE cars SET model = ?, brand = ?, production_year = ?, number_plate = ?, next_vehicle_inspection = ?, client_id = ? WHERE id = ?"; //NAZWA TABELI
 
         List<String> queryParams = new ArrayList<>();
         queryParams.add( car.getModel() );
@@ -112,6 +113,8 @@ public class CarDao {
             System.out.println(e);
         }
     }
+
+
 
 
 }

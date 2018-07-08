@@ -41,7 +41,13 @@
     <a href="/showAllCars">Show all cars</a> <br>
     <a href="/showAllOrders">Show all orders</a> <br>
     <br>
+    <br>
+    <br>
 
+    <a href="/editEmployee">Edit employee</a> <br>
+    <a href="/editClient">Edit client</a> <br>
+    <a href="/editCar">Edit car</a> <br>
+    <a href="/editOrder">Edit order</a> <br>
 
 </body>
 </html>
