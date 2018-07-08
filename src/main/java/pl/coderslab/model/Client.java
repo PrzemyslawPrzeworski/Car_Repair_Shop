@@ -3,8 +3,8 @@ package pl.coderslab.model;
 import java.util.Date;
 
 public class Client {
-    private String name;
-    private String surname;
+    private String first_name;
+    private String second_name;
     private int id;
 
     public Client() {
@@ -12,24 +12,24 @@ public class Client {
 
     public Client(int id, String name, String surname) {
         setId(id);
-        setName(name);
-        setSurname(surname);
+        setFirst_name(name);
+        setSecond_name(surname);
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirst_name(String name) {
+        this.first_name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSecond_name() {
+        return second_name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSecond_name(String surname) {
+        this.second_name = surname;
     }
 
 

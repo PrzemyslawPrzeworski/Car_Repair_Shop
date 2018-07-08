@@ -1,4 +1,4 @@
-package pl.coderslab.DAO;
+package pl.coderslab.dao;
 
 import pl.coderslab.model.Client;
 import pl.coderslab.services.DBService;
@@ -6,7 +6,7 @@ import pl.coderslab.services.DBService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientDAO {
+public class ClientDao {
 
 
         private String databaseName = "Car_Repair_Shop";
@@ -15,6 +15,8 @@ public class ClientDAO {
 
             if (client.getId() == 0) {
                 this.addClient(client);
+            } else {
+                this.updateClient(client);
             }
         }
 
@@ -23,18 +25,18 @@ public class ClientDAO {
             String query = "INSERT INTO clients VALUES (?, ?, ?)";
             List<String> queryParams = new ArrayList<>();
             queryParams.add(String.valueOf(client.getId()));
-            queryParams.add( client.getName());
-            queryParams.add(client.getSurname());
+            queryParams.add( client.getFirst_name());
+            queryParams.add(client.getSecond_name());
 
             DBService.executeUpdate(this.databaseName, query, queryParams);
         }
 
         private void updateClient (Client client) {
-            String query = "UPDATE clients set firstname = ?, secondname = ?, Where id = ?"; //NAZWA TABELI
+            String query = "UPDATE clients set first_name = ?, second_name = ?, Where id = ?"; //NAZWA TABELI
 
             List<String> queryParams = new ArrayList<>();
-            queryParams.add( client.getName()) ;
-            queryParams.add( client.getSurname() );
+            queryParams.add( client.getFirst_name()) ;
+            queryParams.add( client.getSecond_name() );
             queryParams.add( String.valueOf(client.getId()) );
 
             DBService.executeUpdate(this.databaseName, query, queryParams);

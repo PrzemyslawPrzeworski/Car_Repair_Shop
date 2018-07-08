@@ -29,26 +29,26 @@ public class EmployeeDao {
         String query = "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?)"; //NAZWA TABELI
         List<String> queryParams = new ArrayList<>();
         queryParams.add(String.valueOf(employee.getId()));
-        queryParams.add( employee.getFirstName());
-        queryParams.add( employee.getSecondName());
+        queryParams.add( employee.getFirst_name());
+        queryParams.add( employee.getSecond_name());
         queryParams.add( employee.getAddress());
         queryParams.add( employee.getTelephone());
         queryParams.add( employee.getNote());
-        queryParams.add( employee.getManHourCost());
+        queryParams.add( employee.getManhour_cost());
 
         DBService.executeUpdate(this.databaseName, query, queryParams);
     }
 
     private void updateEmployee (Employee employee) {
-        String query = "UPDATE employees set firstname = ?, secondname = ?, address = ?, telephone = ?, note = ?, manhourcost = ? Where id = ?"; //NAZWA TABELI
+        String query = "UPDATE employees set first_name = ?, second_name = ?, address = ?, telephone = ?, note = ?, manhour_cost = ? Where id = ?"; //NAZWA TABELI
 
         List<String> queryParams = new ArrayList<>();
-        queryParams.add( employee.getFirstName() );
-        queryParams.add( employee.getSecondName() );
+        queryParams.add( employee.getFirst_name() );
+        queryParams.add( employee.getSecond_name() );
         queryParams.add( employee.getAddress() );
         queryParams.add( employee.getTelephone() );
         queryParams.add( employee.getNote() );
-        queryParams.add( employee.getManHourCost() );
+        queryParams.add( employee.getManhour_cost() );
         queryParams.add( String.valueOf(employee.getId()) );
 
         DBService.executeUpdate(this.databaseName, query, queryParams);
