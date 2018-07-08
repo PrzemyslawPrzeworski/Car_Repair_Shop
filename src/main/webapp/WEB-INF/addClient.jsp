@@ -16,9 +16,9 @@
     <form action="#" method="post">
     <form>
         <input type="hidden" name="id" value="${client.id}">
-        <input type="text" name="first_name" placeholder="name" value="${client.first_name}" >
-        <input type="text" name="second_name" placeholder="surname" value="${client.second_name}">
-        <input type="date" name="birthday">
+        first_name <input type="text" name="first_name" placeholder="name" value="${client.first_name}" > <br>
+        second_name <input type="text" name="second_name" placeholder="surname" value="${client.second_name}"> <br>
+        birthday <input type="date" name="birthday"> <br>
         <input type="submit">
     </form>
 

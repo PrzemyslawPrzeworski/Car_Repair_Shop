@@ -3,7 +3,8 @@ package pl.coderslab.dao;
 import pl.coderslab.model.Employee;
 import pl.coderslab.services.DBService;
 
-import java.awt.print.Book;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +53,64 @@ public class EmployeeDao {
         queryParams.add( String.valueOf(employee.getId()) );
 
         DBService.executeUpdate(this.databaseName, query, queryParams);
-
     }
+
+    public Employee findEmployeeById(int id) {
+        String query = "SELECT * FROM employees WHERE id = " + id;
+        Employee employee = new Employee();
+        try (ResultSet rs = DBService.executeQuery(DBService.connect(this.databaseName), query)) {
+            while (rs.next()) {
+                employee.setId(rs.getInt("id"));
+                employee.setFirst_name(rs.getString("first_name"));
+                employee.setSecond_name(rs.getString("second_name"));
+                employee.setAddress(rs.getString("address"));
+                employee.setTelephone(rs.getString("telephone"));
+                employee.setNote(rs.getString("note"));
+                employee.setManhour_cost(rs.getString("manhour_cost"));
+            }
+            return employee;
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+        return employee;
+    }
+
+
+    public List<Employee> loadAll(){
+        List<Employee> allEmployees = new ArrayList<>();
+
+        String query = "SELECT * FROM employees";
+
+        try(ResultSet rs = DBService.executeQuery(DBService.connect(this.databaseName), query)){
+            while (rs.next()) {
+                Employee employee = new Employee();
+                employee.setId(rs.getInt("id"));
+                employee.setFirst_name(rs.getString("first_name"));
+                employee.setSecond_name(rs.getString("second_name"));
+                employee.setAddress(rs.getString("address"));
+                employee.setTelephone(rs.getString("telephone"));
+                employee.setManhour_cost(rs.getString("manhour_cost"));
+                allEmployees.add(employee);
+
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+        return allEmployees;
+    }
+
+
+
+    public void delete(int id){
+        String query = "DELETE FROM employees WHERE id=" + id;
+        try {
+            DBService.executeUpdate(this.databaseName, query);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+
 }

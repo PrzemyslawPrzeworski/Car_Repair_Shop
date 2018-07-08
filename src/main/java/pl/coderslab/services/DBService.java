@@ -72,4 +72,25 @@ public class DBService {
         }
     }
 
+    public static ResultSet executeQuery(Connection conn, String query) {
+        ResultSet rs = null;
+        try {
+            rs = conn.createStatement().executeQuery(query);
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+        return rs;
+    }
+
+    public static void executeUpdate(String database, String query){
+        try(Connection con = connect(database)){
+            PreparedStatement prep = con.prepareStatement(query);
+            prep.executeUpdate();
+        }
+        catch (SQLException e){
+            System.out.println(e);
+        }
+    }
+
 }

@@ -15,12 +15,12 @@
     <h1>Add Employee</h1>
     <form action="#" method="post">
         <input type="hidden" name="id" value="${employee.id}"/>
-        <input type="text" name="first_name" placeholder="firstName" value="${employee.first_name}"/>
-        <input type="text" name="second_name" placeholder="secondName" value="${employee.second_name}"/>
-        <input type="text" name="address" placeholder="address" value="${employee.address}"/>
-        <input type="text" name="telephone" placeholder="telephone" value="${employee.telephone}"/>
-        <input type="text" name="note" placeholder="note" value="${employee.note}"/>
-        <input type="text" name="manhour_cost" placeholder="manHourCost" value="${employee.manhour_cost}"/>
+        first_name <input type="text" name="first_name" placeholder="firstName" value="${employee.first_name}"/> <br>
+        second_name <input type="text" name="second_name" placeholder="secondName" value="${employee.second_name}"/> <br>
+        address <input type="text" name="address" placeholder="address" value="${employee.address}"/> <br>
+        telephone <input type="text" name="telephone" placeholder="telephone" value="${employee.telephone}"/> <br>
+        note <input type="text" name="note" placeholder="note" value="${employee.note}"/> <br>
+        manhour_cost <input type="text" name="manhour_cost" placeholder="manHourCost" value="${employee.manhour_cost}"/> <br>
         <input type="submit">
     </form>
 

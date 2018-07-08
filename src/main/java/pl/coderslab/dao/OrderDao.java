@@ -3,6 +3,8 @@ package pl.coderslab.dao;
 import pl.coderslab.model.Order;
 import pl.coderslab.services.DBService;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,5 +62,78 @@ public class OrderDao {
         DBService.executeUpdate(this.databaseName, query, queryParams);
 
     }
+
+
+    public Order findOrderById(int id) {
+        String query = "SELECT * FROM orders WHERE id = " + id;
+        Order order = new Order();
+        try (ResultSet rs = DBService.executeQuery(DBService.connect(this.databaseName), query)) {
+            while (rs.next()) {
+                order.setId(rs.getInt("id"));
+                order.setAcceptance_date(rs.getString("acceptance_date"));
+                order.setRepair_date(rs.getString("repair_date"));
+                order.setEmployee_id(rs.getInt("employee_id"));
+                order.setProblem_description(rs.getString("problem_description"));
+                order.setRepair_description(rs.getString("repair_description"));
+                order.setStatus(rs.getString("status"));
+                order.setCar_id(rs.getInt("car_id"));
+                order.setClient_cost(rs.getDouble("client_cost"));
+                order.setParts_cost(rs.getDouble("parts_cost"));
+                order.setManhour_cost(rs.getDouble("manhour_cost"));
+                order.setManhour(rs.getInt("manhour"));
+            }
+            return order;
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+        return order;
+    }
+
+
+
+    public List<Order> loadAll(){
+        List<Order> allOrders = new ArrayList<>();
+
+        String query = "SELECT * FROM orders";
+
+        try(ResultSet rs = DBService.executeQuery(DBService.connect(this.databaseName), query)){
+            while (rs.next()) {
+                Order order = new Order();
+                order.setId(rs.getInt("id"));
+                order.setAcceptance_date(rs.getString("acceptance_date"));
+                order.setRepair_date(rs.getString("repair_date"));
+                order.setEmployee_id(rs.getInt("employee_id"));
+                order.setProblem_description(rs.getString("problem_description"));
+                order.setRepair_description(rs.getString("repair_description"));
+                order.setStatus(rs.getString("status"));
+                order.setCar_id(rs.getInt("car_id"));
+                order.setClient_cost(rs.getDouble("client_cost"));
+                order.setParts_cost(rs.getDouble("parts_cost"));
+                order.setManhour_cost(rs.getDouble("manhour_cost"));
+                order.setManhour(rs.getInt("manhour"));
+                allOrders.add(order);
+
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+        return allOrders;
+    }
+
+
+
+    public void delete(int id){
+        String query = "DELETE FROM orders WHERE id=" + id;
+        try {
+            DBService.executeUpdate(this.databaseName, query);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+
+
 
 }
