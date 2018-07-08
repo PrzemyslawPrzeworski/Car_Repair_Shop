@@ -40,7 +40,7 @@ public class EmployeeDao {
     }
 
     private void updateEmployee (Employee employee) {
-        String query = "UPDATE employees set first_name = ?, second_name = ?, address = ?, telephone = ?, note = ?, manhour_cost = ? Where id = ?"; //NAZWA TABELI
+        String query = "UPDATE employees SET first_name = ?, second_name = ?, address = ?, telephone = ?, note = ?, manhour_cost = ? WHERE id = ?"; //NAZWA TABELI
 
         List<String> queryParams = new ArrayList<>();
         queryParams.add( employee.getFirst_name() );

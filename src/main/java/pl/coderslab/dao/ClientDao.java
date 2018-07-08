@@ -32,7 +32,7 @@ public class ClientDao {
         }
 
         private void updateClient (Client client) {
-            String query = "UPDATE clients set first_name = ?, second_name = ?, Where id = ?"; //NAZWA TABELI
+            String query = "UPDATE clients SET first_name = ?, second_name = ?, WHERE id = ?"; //NAZWA TABELI
 
             List<String> queryParams = new ArrayList<>();
             queryParams.add( client.getFirst_name()) ;

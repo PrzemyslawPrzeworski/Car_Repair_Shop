@@ -8,12 +8,12 @@ public class Car {
     private String brand;
     private int production_year;
     private String number_plate;
-    private Date next_vehicle_inspection;
+    private String next_vehicle_inspection;
     private int client_id;
 
     public Car() {}
 
-    public Car(int id, String model, String brand, int productionYear, String numberPlate, Date nextVehicleInspection, int client_id) {
+    public Car(int id, String model, String brand, int productionYear, String numberPlate, String nextVehicleInspection, int client_id) {
         setId(id);
         setModel(model);
         setBrand(brand);
@@ -63,11 +63,11 @@ public class Car {
         this.number_plate = numberPlate;
     }
 
-    public Date getNext_vehicle_inspection() {
+    public String getNext_vehicle_inspection() {
         return next_vehicle_inspection;
     }
 
-    public void setNext_vehicle_inspection(Date nextVehicleInspection) {
+    public void setNext_vehicle_inspection(String nextVehicleInspection) {
         this.next_vehicle_inspection = nextVehicleInspection;
     }
 
